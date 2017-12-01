@@ -1,4 +1,4 @@
-package metabolismo;
+package organismo.metabolismo;
 
 import organismo.Energia;
 

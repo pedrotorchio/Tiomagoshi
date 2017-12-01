@@ -1,4 +1,4 @@
-package metabolismo;
+package organismo.metabolismo;
 
 import java.util.Timer;
 import java.util.TimerTask;
