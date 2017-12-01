@@ -2,16 +2,14 @@ package Submetabolismos;
 
 import metabolismo.Energia;
 
-public class Catabolismo extends Submetabolismo {
+public class Catabolismo extends AbsSubmetabolismo {
 
 	public Catabolismo(Energia energia) {
-		// TODO Auto-generated constructor stub
+		super(energia);
 	}
 
-	@Override
 	public void loop() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("anabolismo loop");
 	}
 
 }

@@ -1,12 +1,8 @@
-package metabolismo;
+package Submetabolismos;
 
-import java.util.Timer;
-import java.util.TimerTask;
+import metabolismo.Energia;
 
-import Submetabolismos.Anabolismo;
-import Submetabolismos.Catabolismo;
-
-public class Metabolismo{
+public class Submetabolismos implements Runnable{
 	public static final int periodo = 1000; 
 	Energia energia;
 	
@@ -17,12 +13,12 @@ public class Metabolismo{
 	
 	int balancoAnabolico0a100 = 20; 
 	
-	public Metabolismo(Energia e){
+	public Submetabolismos(Energia e){
 		this.energia = e;
 	}
 	public void run(){
-		catabolismo = new Catabolismo(energia);
-		anabolismo  = new Anabolismo(energia);
+		(catabolismo = new Catabolismo(energia)).run();;
+		(anabolismo  = new Anabolismo(energia)).run();
 	}
 	private int getAnabolismo(){
 		return balancoAnabolico0a100;
