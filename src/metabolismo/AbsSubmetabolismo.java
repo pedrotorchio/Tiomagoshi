@@ -1,9 +1,9 @@
-package Submetabolismos;
+package metabolismo;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
-import metabolismo.Energia;
+import organismo.Energia;
 
 public abstract class AbsSubmetabolismo extends TimerTask{
 	
@@ -13,7 +13,7 @@ public abstract class AbsSubmetabolismo extends TimerTask{
 	}
 	public void start(){
 		Timer timer = new Timer(true);
-		  	  timer.scheduleAtFixedRate(this, 0, Submetabolismos.periodo);
+		  	  timer.scheduleAtFixedRate(this, 0, Metabolismo.periodo);
 	}
 	public void run(){
 		loop();		  

@@ -1,4 +1,4 @@
-package metabolismo;
+package organismo;
 
 import tio.ISerVivo;
 

@@ -1,6 +1,6 @@
-package Submetabolismos;
+package metabolismo;
 
-import metabolismo.Energia;
+import organismo.Energia;
 
 public class Catabolismo extends AbsSubmetabolismo {
 
@@ -9,7 +9,7 @@ public class Catabolismo extends AbsSubmetabolismo {
 	}
 
 	public void loop() {
-		System.out.println("anabolismo loop");
+		
 	}
 
 }

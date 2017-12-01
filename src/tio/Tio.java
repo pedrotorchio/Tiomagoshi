@@ -1,7 +1,7 @@
 package tio;
 
 import gui.ISerVivoNoMundo;
-import metabolismo.IMetabolismoEnergetico;
+import organismo.IMetabolismoEnergetico;
 
 public class Tio implements ISerVivo, ILowEnergyListener{
 	

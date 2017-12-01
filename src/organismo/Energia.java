@@ -1,4 +1,4 @@
-package metabolismo;
+package organismo;
 
 public class Energia {
 	int nivel = 100;

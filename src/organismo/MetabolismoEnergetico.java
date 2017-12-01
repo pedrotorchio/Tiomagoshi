@@ -1,13 +1,15 @@
-package metabolismo;
+package organismo;
 
-import Submetabolismos.Submetabolismos;
+
+import metabolismo.Metabolismo;
 import tio.ILowEnergyListener;
 
-public class MetabolismoEnergetico implements IMetabolismoEnergetico {
+public class MetabolismoEnergetico implements IMetabolismoEnergetico, Runnable {
 	
 	protected Energia energia;
 	protected ILowEnergyListener tio;
-	protected Submetabolismos metabolismo;
+	protected Metabolismo metabolismo;
+
 	
 	/**
 	 * Threshold [0, 100] é o nivel de "fome" onde o tio começa a perder saúde, até morrer..
@@ -18,7 +20,7 @@ public class MetabolismoEnergetico implements IMetabolismoEnergetico {
 	public MetabolismoEnergetico(int energiaInicial, int threshold, ILowEnergyListener tio){
 		this.tio = tio;		
 		this.energia = initEnergia(energiaInicial, threshold, tio);
-		this.metabolismo = new Submetabolismos(this.energia);
+		this.metabolismo = null;
 	}
 	public Energia initEnergia(int energiaInicial, int threshold, ILowEnergyListener tio){
 		Energia energia = new Energia(energiaInicial);
@@ -53,5 +55,11 @@ public class MetabolismoEnergetico implements IMetabolismoEnergetico {
 	public int getEnergia() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+	@Override
+	public void run() {
+		System.out.println("Iniciando Metabolismo..");
+		metabolismo.run();
+		
 	}
 }
