@@ -1,8 +1,8 @@
 package metabolismo;
 
-class Energia {
+public class Energia {
 	int nivel = 100;
-	int threshold = 25;
+	int threshold = 60;
 	LowLevelsCallback llCallback = null;
 	
 	public Energia(int nivel){
