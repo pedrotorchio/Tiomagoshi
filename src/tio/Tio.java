@@ -3,7 +3,7 @@ package tio;
 import gui.ISerVivoNoMundo;
 import metabolismo.IMetabolismoEnergetico;
 
-public class Tio implements ISerVivo{
+public class Tio implements ISerVivo, ILowEnergyListener{
 	
 	IMetabolismoEnergetico metEnergetico;
 	ISerVivoNoMundo gui;
@@ -26,6 +26,12 @@ public class Tio implements ISerVivo{
 
 	@Override
 	public void exercitar(int minutos) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void lowEnergyLevel(int level) {
 		// TODO Auto-generated method stub
 		
 	}
