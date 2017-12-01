@@ -5,8 +5,11 @@ public class Energia {
 	int threshold = 60;
 	LowLevelsCallback llCallback = null;
 	
+	final int MAX_ENERGIA = 2500;	
+	final int MIN_ENERGIA = 0;
+	
 	public Energia(int nivel){
-		this.nivel = nivel;
+		setNivel(nivel);
 	}
 	
 	public void setThreshold(int th){
@@ -16,9 +19,15 @@ public class Energia {
 		this.llCallback = cb;
 	}
 	public void setNivel(int nivel){
+		if(nivel > MAX_ENERGIA)
+			nivel = MAX_ENERGIA;
+		else 
+			if(nivel < MIN_ENERGIA)
+				nivel = MIN_ENERGIA;
 		
 		if(nivel < threshold)
 			this.llCallback.lowlevelAction(nivel);
+		
 		
 		this.nivel = nivel;
 	}

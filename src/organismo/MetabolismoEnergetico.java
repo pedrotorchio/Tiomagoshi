@@ -1,7 +1,7 @@
 package organismo;
 
 
-import metabolismo.Metabolismo;
+import organismo.metabolismo.Metabolismo;
 import tio.ILowEnergyListener;
 
 public class MetabolismoEnergetico implements IMetabolismoEnergetico, Runnable {
@@ -20,7 +20,7 @@ public class MetabolismoEnergetico implements IMetabolismoEnergetico, Runnable {
 	public MetabolismoEnergetico(int energiaInicial, int threshold, ILowEnergyListener tio){
 		this.tio = tio;		
 		this.energia = initEnergia(energiaInicial, threshold, tio);
-		this.metabolismo = null;
+		this.metabolismo = Metabolismo.getInstance();
 	}
 	public Energia initEnergia(int energiaInicial, int threshold, ILowEnergyListener tio){
 		Energia energia = new Energia(energiaInicial);

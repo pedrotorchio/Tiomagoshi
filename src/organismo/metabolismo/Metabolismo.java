@@ -10,8 +10,6 @@ public class Metabolismo implements Runnable{
 	Anabolismo anabolismo;
 	Catabolismo catabolismo;
 	
-	final int MAX_ENERGIA = 2000;
-	
 	private int balancoAnabolico0a100 = 20; 
 	
 	private Metabolismo(){}
@@ -22,12 +20,13 @@ public class Metabolismo implements Runnable{
 		return instance;
 	}
 	public void run(){
-		(catabolismo = new Catabolismo(energia)).start();
-		(anabolismo  = new Anabolismo(energia)).start();
+		(catabolismo = new Catabolismo(energia, this)).start();
+		(anabolismo  = new Anabolismo(energia, this)).start();
 	}
 	public void setEnergia(Energia energia){
 		this.energia = energia;
 	}
+	
 	public void setAnabolismo(int de0a100){
 		balancoAnabolico0a100 = de0a100;
 	}
