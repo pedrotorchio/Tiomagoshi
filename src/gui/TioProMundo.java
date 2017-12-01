@@ -1,10 +1,10 @@
 package gui;
 
-import tio.Tio;
+import tio.ISerVivo;
 
 public class TioProMundo implements ISerVivoNoMundo {
-	Tio tio;
-	public TioProMundo(Tio tio){
+	ISerVivo tio;
+	public TioProMundo(ISerVivo tio){
 		this.tio = tio;
 	}
 	@Override
