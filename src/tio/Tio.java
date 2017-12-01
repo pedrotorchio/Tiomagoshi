@@ -9,6 +9,9 @@ public class Tio implements ISerVivo, ILowEnergyListener{
 	ISerVivoNoMundo gui;
 	
 	public static void main(String[] args) {
+		// criar objeto tio
+		// criar objeto metabolismoenergetico e passar energia inicial, threshold e o proprio objeto tio
+		// criar objeto interface grafica TioProMundo (eu devia ter planejado isso melhor haha)
 		
 	}
 
@@ -32,8 +35,7 @@ public class Tio implements ISerVivo, ILowEnergyListener{
 
 	@Override
 	public void lowEnergyLevel(int level) {
-		// TODO Auto-generated method stub
-		
+		// Isso aqui vai ser chamado automaticamente sempre que os niveis de energia passarem um valor threshold
 	}
 
 }

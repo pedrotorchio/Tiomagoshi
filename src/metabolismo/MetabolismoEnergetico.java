@@ -6,6 +6,12 @@ public class MetabolismoEnergetico implements IMetabolismoEnergetico {
 	
 	protected Energia energia;
 	protected ILowEnergyListener tio;
+	/**
+	 * Threshold é o nivel de "fome" onde o tio começa a perder saúde, até morrer..
+	 * @param energiaInicial
+	 * @param threshold
+	 * @param tio
+	 */
 	public MetabolismoEnergetico(int energiaInicial, int threshold, ILowEnergyListener tio){
 		this.tio = tio;
 		initEnergia(energiaInicial, threshold, tio);
