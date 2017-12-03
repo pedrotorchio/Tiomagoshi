@@ -22,7 +22,7 @@ public class MetabolismoEnergetico implements ServivoComNescessidades {
 		this.metabolismo = Metabolismo.getInstance(energia);
 	}
 	
-	public void iniciar() throws Exception {
+	public void start(){
 		if(energia == null || metabolismo == null){
 			System.out.println("ERRO: "
 					+ "Metabolismo Não pode iniciar sem um organismo.Energia. \n"
@@ -36,11 +36,12 @@ public class MetabolismoEnergetico implements ServivoComNescessidades {
 	
 	
 	public void comer(double fatorAnabolico) {
-		System.out.println("++" + fatorAnabolico + "% Anabolismo");		
 		
 		double nivelMet = metabolismo.getAnabolismo();
-			   nivelMet = nivelMet + fatorAnabolico;
+			   nivelMet += fatorAnabolico;
 	
+	   System.out.println("++" + fatorAnabolico + "% Anabolismo");
+	   
 	   metabolismo.setAnabolismo(nivelMet);
 	}
 	public void dormir(double minutos) {
@@ -50,10 +51,13 @@ public class MetabolismoEnergetico implements ServivoComNescessidades {
 		catabolismoXtempo(1, minutos);
 	}
 	private void catabolismoXtempo(double taxa, double min){
+		double value    = min*taxa;
+		
+		System.out.println("++" + value+ "% Catabolismo");
 		
 		double nivelMet = metabolismo.getCatabolismo();
-			   nivelMet += min * taxa;		
-	
+			   nivelMet += value;				
+			   
 		metabolismo.setCatabolismo(nivelMet);
 	}
 

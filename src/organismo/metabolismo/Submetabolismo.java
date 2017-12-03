@@ -11,7 +11,7 @@ public abstract class Submetabolismo extends TimerTask{
 	protected Metabolismo metabolismo;
 	protected int energiaPasso = 100; // o quanto altera caso metabolismo esteja a 100%
 	protected String titulo = "Submetabolismo";
-	 
+	protected boolean cycleInfo = false;
 	
 	public Submetabolismo(Energia energia, Metabolismo metabolismo, String titulo){
 		this(energia, metabolismo);
@@ -52,9 +52,12 @@ public abstract class Submetabolismo extends TimerTask{
 	
 	protected abstract void setNivelMetabolico(double nivel);
 	protected abstract double getNivelMetabolico();
-	
+	protected void setCycleInfo(boolean bool){
+		cycleInfo = bool;
+	}
 	protected void fimDeCiclo(){
-		System.out.println(toString());
+		if(cycleInfo)
+			System.out.println(toString());
 	};
 	protected void inicioDeCiclo(){};
 	public String toString(){
