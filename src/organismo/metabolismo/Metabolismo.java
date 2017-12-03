@@ -3,19 +3,26 @@ package organismo.metabolismo;
 import organismo.Energia;
 
 public class Metabolismo implements Runnable{
-	public static final int periodo = 1000;
+	public static final int PERIODO = 500;
+	
+	public static final int MAX_NIVEL= 100;
+	public static final int MIN_NIVEL= 0;
 	protected static Metabolismo instance = null;
 	Energia energia;
 	
 	Anabolismo anabolismo;
 	Catabolismo catabolismo;
 	
-	private int balancoAnabolico0a100 = 20; 
+	private double balancoAnabolico0a100 = 80; 
+	
+	
 	
 	private Metabolismo(){}
-	public static Metabolismo getInstance(){
+	public static Metabolismo getInstance(Energia energia){
 		if(instance == null)
 			instance = new Metabolismo();
+		
+		instance.setEnergia(energia);
 		
 		return instance;
 	}
@@ -27,16 +34,25 @@ public class Metabolismo implements Runnable{
 		this.energia = energia;
 	}
 	
-	public void setAnabolismo(int de0a100){
-		balancoAnabolico0a100 = de0a100;
+	public void setAnabolismo(double nivel){
+		nivel = keepWithinRange(nivel);
+		balancoAnabolico0a100 = nivel;
 	}
-	public void setCatabolismo(int de0a100){
-		balancoAnabolico0a100 = 100 - de0a100;
+	public void setCatabolismo(double nivel){
+		nivel = keepWithinRange(nivel);
+		
+		balancoAnabolico0a100 = 100 - nivel;
 	}
-	public int getAnabolismo(){
+	public double getAnabolismo(){
 		return balancoAnabolico0a100;
 	}
-	public int getCatabolismo(){
+	public double getCatabolismo(){
 		return 100 - getAnabolismo();
+	}
+	public double keepWithinRange(double value){
+		// mantém entre max e min
+		value = Math.min(MAX_NIVEL, Math.max(MIN_NIVEL, value));
+		
+		return value;
 	}
 }

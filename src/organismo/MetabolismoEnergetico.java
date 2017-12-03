@@ -2,12 +2,10 @@ package organismo;
 
 
 import organismo.metabolismo.Metabolismo;
-import tio.ILowEnergyListener;
 
-public class MetabolismoEnergetico implements IMetabolismoEnergetico, Runnable {
+public class MetabolismoEnergetico implements ServivoComNescessidades {
 	
 	protected Energia energia;
-	protected ILowEnergyListener tio;
 	protected Metabolismo metabolismo;
 
 	
@@ -17,49 +15,46 @@ public class MetabolismoEnergetico implements IMetabolismoEnergetico, Runnable {
 	 * @param threshold
 	 * @param tio
 	 */
-	public MetabolismoEnergetico(int energiaInicial, int threshold, ILowEnergyListener tio){
-		this.tio = tio;		
-		this.energia = initEnergia(energiaInicial, threshold, tio);
-		this.metabolismo = Metabolismo.getInstance();
+	public MetabolismoEnergetico(){}
+	
+	public void setEnergia(Energia energia){
+		this.energia = energia;
+		this.metabolismo = Metabolismo.getInstance(energia);
 	}
-	public Energia initEnergia(int energiaInicial, int threshold, ILowEnergyListener tio){
-		Energia energia = new Energia(energiaInicial);
-		energia.setThreshold(threshold);
-		energia.setLowLevelsCallback(new Energia.LowLevelsCallback() {
-			public void lowlevelAction(int level) {
-				tio.lowEnergyLevel(level);
-			}
-		});
-		return energia;
-	}
-
-	@Override
-	public void comer(int calorias) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void dormir(int minutos) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void exercitar(int minutos) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public int getEnergia() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	@Override
-	public void run() {
+	
+	public void iniciar() throws Exception {
+		if(energia == null || metabolismo == null){
+			System.out.println("ERRO: "
+					+ "Metabolismo Não pode iniciar sem um organismo.Energia. \n"
+					+ "Utilizar método setEnergia");
+			return;
+		}
+			
 		System.out.println("Iniciando Metabolismo..");
-		metabolismo.run();
-		
+		metabolismo.run();		
 	}
+	
+	
+	public void comer(double fatorAnabolico) {
+		System.out.println("++" + fatorAnabolico + "% Anabolismo");		
+		
+		double nivelMet = metabolismo.getAnabolismo();
+			   nivelMet = nivelMet + fatorAnabolico;
+	
+	   metabolismo.setAnabolismo(nivelMet);
+	}
+	public void dormir(double minutos) {
+		catabolismoXtempo(.1, minutos);		
+	}
+	public void exercitar(double minutos) {
+		catabolismoXtempo(1, minutos);
+	}
+	private void catabolismoXtempo(double taxa, double min){
+		
+		double nivelMet = metabolismo.getCatabolismo();
+			   nivelMet += min * taxa;		
+	
+		metabolismo.setCatabolismo(nivelMet);
+	}
+
 }

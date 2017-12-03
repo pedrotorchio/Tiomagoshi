@@ -5,23 +5,25 @@ import organismo.Energia;
 public class Catabolismo extends Submetabolismo {
 
 	public Catabolismo(Energia energia, Metabolismo metabolismo) {
-		super(energia, metabolismo);
+		super(energia, metabolismo, "Catabolismo");
 	}
 
 	
-	protected int alteraEnergia(int nivelEnergetico, int nivelMetabolico){
-		nivelEnergetico -= (nivelMetabolico/100) * energiaPasso;
+	protected double alteraEnergia(double nivelEnergetico, double nivelMetabolico){
+
+		nivelEnergetico -= alteracaoLinearEnergia();
 		
-		return nivelEnergetico;
+		return nivelEnergetico;	
+				
 	}
-	protected int alteraNivelMetabolico(int nivelMetabolico) {
+	protected double alteraNivelMetabolico(double nivelMetabolico) {
 		return ++nivelMetabolico;
 	}
-	protected void setNivelMetabolico(int nivel) {
-		metabolismo.setAnabolismo(nivel);
+	protected void setNivelMetabolico(double nivel) {
+		metabolismo.setCatabolismo(nivel);
 	}
-	protected int getNivelMetabolico() {
-		return metabolismo.getAnabolismo();
+	protected double getNivelMetabolico() {
+		return metabolismo.getCatabolismo();
 	}
 
 }
