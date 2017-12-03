@@ -27,59 +27,59 @@ public class FrameTiogotchi extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jProgressBar1 = new javax.swing.JProgressBar();
+        comer = new javax.swing.JButton();
+        dormir = new javax.swing.JButton();
+        exercitar = new javax.swing.JButton();
+        energiaProgressBar = new javax.swing.JProgressBar();
         jLabel1 = new javax.swing.JLabel();
-        jProgressBar2 = new javax.swing.JProgressBar();
+        saudeProgressBar = new javax.swing.JProgressBar();
         jLabel2 = new javax.swing.JLabel();
         canvas1 = new java.awt.Canvas();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Comer");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        comer.setText("Comer");
+        comer.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                comerMouseClicked(evt);
             }
         });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        comer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                comerActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Dormir");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        dormir.setText("Dormir");
+        dormir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
+                dormirMouseClicked(evt);
             }
         });
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        dormir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                dormirActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Exercitar");
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+        exercitar.setText("Exercitar");
+        exercitar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
+                exercitarMouseClicked(evt);
             }
         });
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        exercitar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                exercitarActionPerformed(evt);
             }
         });
 
-        jProgressBar1.setOrientation(1);
+        energiaProgressBar.setOrientation(1);
 
         jLabel1.setText("Energia");
 
-        jProgressBar2.setOrientation(1);
+        saudeProgressBar.setOrientation(1);
 
         jLabel2.setText("Saude");
 
@@ -93,12 +93,13 @@ public class FrameTiogotchi extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(31, 31, 31)
-                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(energiaProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
                         .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(50, 50, 50)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jProgressBar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(saudeProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addComponent(jLabel1)
@@ -107,11 +108,11 @@ public class FrameTiogotchi extends javax.swing.JFrame {
                 .addGap(47, 47, 47))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(45, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(comer)
                 .addGap(42, 42, 42)
-                .addComponent(jButton2)
+                .addComponent(dormir)
                 .addGap(35, 35, 35)
-                .addComponent(jButton3)
+                .addComponent(exercitar)
                 .addGap(60, 60, 60))
         );
         layout.setVerticalGroup(
@@ -121,8 +122,8 @@ public class FrameTiogotchi extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jProgressBar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(energiaProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(saudeProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(109, 109, 109)
                         .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -136,38 +137,38 @@ public class FrameTiogotchi extends javax.swing.JFrame {
                     .addComponent(jLabel1))
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(exercitar)
+                    .addComponent(dormir)
+                    .addComponent(comer))
                 .addGap(261, 261, 261))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void comerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comerMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_comerMouseClicked
 
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+    private void dormirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dormirMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2MouseClicked
+    }//GEN-LAST:event_dormirMouseClicked
 
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+    private void exercitarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exercitarMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3MouseClicked
+    }//GEN-LAST:event_exercitarMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void comerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comerActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_comerActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void dormirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dormirActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_dormirActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void exercitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exercitarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_exercitarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -206,13 +207,13 @@ public class FrameTiogotchi extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Canvas canvas1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton comer;
+    private javax.swing.JButton dormir;
+    private javax.swing.JProgressBar energiaProgressBar;
+    private javax.swing.JButton exercitar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JProgressBar jProgressBar1;
-    private javax.swing.JProgressBar jProgressBar2;
+    private javax.swing.JProgressBar saudeProgressBar;
     // End of variables declaration//GEN-END:variables
 }
