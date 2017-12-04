@@ -19,12 +19,13 @@ public class Tio implements ServivoComNescessidades, EnergyLevelListener{
 		
 		mEnergetico.setEnergia(energia);
 		
+		gui.setTio(tio);
 		
 		tio.setMetabolismoEnergetico(mEnergetico);
 		tio.setGui(gui);
 		
-		energia.setNivel(1200);
-		energia.setThreshold(600);
+		energia.setNivel(1400);
+		energia.setThreshold(800);
 		energia.setEnergyLevelUpdateCallback(tio);
 		energia.setLowEnergyLevelCallback(tio);
 		
@@ -42,10 +43,10 @@ public class Tio implements ServivoComNescessidades, EnergyLevelListener{
 	public void setGui(FrameTiogotchi gui){
 		this.gui = gui;
 	}
+	
 	@Override
 	public void comer(double fatorAnabolico) {
-		// TODO Auto-generated method stub
-		
+		mEnergetico.comer(fatorAnabolico);
 	}
 
 	@Override

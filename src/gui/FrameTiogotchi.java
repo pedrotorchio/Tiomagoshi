@@ -7,6 +7,8 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import tio.Tio;
 
@@ -57,7 +59,7 @@ public class FrameTiogotchi extends javax.swing.JFrame {
         comer.setText("Comer");
         comer.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                comerMouseClicked(evt);
+            	comer();
             }
         });
         comer.addActionListener(new java.awt.event.ActionListener() {
@@ -241,6 +243,19 @@ public class FrameTiogotchi extends javax.swing.JFrame {
     	energiaProgressBar.setForeground(color);
     	humorLbl.setText(cara);
     	getContentPane().setBackground(color);
+    }
+    public void comer(){
+    	tio.comer(60);
+    	comer.setEnabled(false);
+        TimerTask task = new TimerTask() {
+            public void run() {
+                comer.setEnabled(true);
+            }
+        };
+        Timer timer = new Timer("Comer");
+         
+        long delay = 8000L;
+        timer.schedule(task, delay);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Canvas canvas1;
