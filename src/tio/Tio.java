@@ -19,9 +19,12 @@ public class Tio implements ServivoComNescessidades, EnergyLevelListener{
 		
 		mEnergetico.setEnergia(energia);
 		
+		
 		tio.setMetabolismoEnergetico(mEnergetico);
 		tio.setGui(gui);
 		
+		energia.setNivel(1200);
+		energia.setThreshold(600);
 		energia.setEnergyLevelUpdateCallback(tio);
 		energia.setLowEnergyLevelCallback(tio);
 		
@@ -63,6 +66,7 @@ public class Tio implements ServivoComNescessidades, EnergyLevelListener{
 	}
 
 	public synchronized void energyLevelUpdate(double level, int max, int min) {
+		
 		double percent = level*100/max;	
 		gui.setEnergiaLvl(percent);
 	}

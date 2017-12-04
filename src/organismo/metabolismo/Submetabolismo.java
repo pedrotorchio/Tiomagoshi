@@ -9,7 +9,7 @@ public abstract class Submetabolismo extends TimerTask{
 	
 	protected Energia energia;
 	protected Metabolismo metabolismo;
-	protected int energiaPasso = 100; // o quanto altera caso metabolismo esteja a 100%
+	protected int energiaPasso = 50; // o quanto altera caso metabolismo esteja a 100%
 	protected String titulo = "Submetabolismo";
 	protected boolean cycleInfo = false;
 	

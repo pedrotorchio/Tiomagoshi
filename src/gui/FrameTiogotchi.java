@@ -6,6 +6,7 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Font;
 
 import tio.Tio;
 
@@ -27,8 +28,8 @@ public class FrameTiogotchi extends javax.swing.JFrame {
 	
 	public int humor;
     public FrameTiogotchi() {
-    	
         initComponents();
+        setHumor(HUMOR_OK);
     }
 
 
@@ -49,7 +50,7 @@ public class FrameTiogotchi extends javax.swing.JFrame {
         saudeProgressBar = new javax.swing.JProgressBar();
         jLabel2 = new javax.swing.JLabel();
         canvas1 = new java.awt.Canvas();
-        jLabel3 = new javax.swing.JLabel();
+        humorLbl = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,7 +98,11 @@ public class FrameTiogotchi extends javax.swing.JFrame {
 
         jLabel2.setText("Saude");
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/tiotriste.png"))); // NOI18N
+        humorLbl.setText(":)");
+        Font inuse = humorLbl.getFont();
+        inuse = new Font(inuse.getName(), inuse.getStyle(), inuse.getSize()*10);
+        humorLbl.setFont(inuse);
+        //jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/tiotriste.png"))); // NOI18N
 
 
 
@@ -123,7 +128,7 @@ public class FrameTiogotchi extends javax.swing.JFrame {
                         .addGap(31, 31, 31)
                         .addComponent(energiaProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33)
-                        .addComponent(jLabel3)
+                        .addComponent(humorLbl)
                         .addGap(32, 32, 32)
                         .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(21, 21, 21)
@@ -143,7 +148,7 @@ public class FrameTiogotchi extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(energiaProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(humorLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(saudeProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))
@@ -197,38 +202,9 @@ public class FrameTiogotchi extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrameTiogotchi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrameTiogotchi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrameTiogotchi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrameTiogotchi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrameTiogotchi().setVisible(true);
-            }
-        });
-    }
     public void setEnergiaLvl(double lvl){
+    	
     	this.energiaProgressBar.setValue((int) lvl);
     }
     public void setTio(Tio tio){
@@ -237,20 +213,34 @@ public class FrameTiogotchi extends javax.swing.JFrame {
     public void setHumor(int humor){
     	this.humor = humor;
     	Color color = null;
+    	String cara = "{|:{)";
     	switch(humor){
     	
     		case HUMOR_FELIZ:
-    			color = Color.GREEN; break;
+    			color = Color.decode("#ddffe0");
+    			
+    			cara  = ":)";
+    			break;
     		case HUMOR_OK:
-    			color = Color.BLUE; break;
+    			color = Color.decode("#dddeff");
+    			cara  = ":|";
+    			break;
     		case HUMOR_FAMINTO:
-    			color = Color.RED; break;
+    			color = Color.decode("#ffdddd"); 
+    			cara  = ":&";
+    			break;
     		case HUMOR_TRISTE:
-    			color = Color.RED; break;
+    			color = Color.decode("#f9ddff"); 
+    			cara  = ":(";
+    			break;
     		case HUMOR_MORTO:
-    			color = Color.BLACK; break;    
+    			color = Color.decode("#d2d2d2");
+    			cara  = ":x";
+    			break;    
     	}
     	energiaProgressBar.setForeground(color);
+    	humorLbl.setText(cara);
+    	getContentPane().setBackground(color);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Canvas canvas1;
@@ -260,7 +250,7 @@ public class FrameTiogotchi extends javax.swing.JFrame {
     private javax.swing.JProgressBar energiaProgressBar;    
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel humorLbl;
     private javax.swing.JProgressBar saudeProgressBar;
     // End of variables declaration//GEN-END:variables
 }

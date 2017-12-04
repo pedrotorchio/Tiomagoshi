@@ -13,7 +13,7 @@ public class Metabolismo implements Runnable{
 	Anabolismo anabolismo;
 	Catabolismo catabolismo;
 	
-	private double balancoAnabolico0a100 = 80; 
+	private double balancoAnabolico0a100 = 50; 
 	
 	
 	
