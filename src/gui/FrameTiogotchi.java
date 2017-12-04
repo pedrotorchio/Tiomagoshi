@@ -5,6 +5,10 @@
  */
 package gui;
 
+import java.awt.Color;
+
+import tio.Tio;
+
 /**
  *
  * @author rodol_000
@@ -14,9 +18,19 @@ public class FrameTiogotchi extends javax.swing.JFrame {
     /**
      * Creates new form FrameTiogotchi
      */
+	Tio tio;
+	public static final int HUMOR_FELIZ = 0;
+	public static final int HUMOR_OK    = 1;
+	public static final int HUMOR_TRISTE = 2;
+	public static final int HUMOR_FAMINTO = 3;
+	public static final int HUMOR_MORTO   = 4;
+	
+	public int humor;
     public FrameTiogotchi() {
+    	
         initComponents();
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,15 +44,12 @@ public class FrameTiogotchi extends javax.swing.JFrame {
         comer = new javax.swing.JButton();
         dormir = new javax.swing.JButton();
         exercitar = new javax.swing.JButton();
-        energiaProgressBar = new javax.swing.JProgressBar();
+        energiaProgressBar = new javax.swing.JProgressBar(0, 100);
         jLabel1 = new javax.swing.JLabel();
         saudeProgressBar = new javax.swing.JProgressBar();
         jLabel2 = new javax.swing.JLabel();
         canvas1 = new java.awt.Canvas();
         jLabel3 = new javax.swing.JLabel();
-        estadoButton = new javax.swing.JButton();
-        saudeButton = new javax.swing.JButton();
-        energiaButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,21 +99,7 @@ public class FrameTiogotchi extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/tiotriste.png"))); // NOI18N
 
-        estadoButton.setText("setEstado");
-        estadoButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                estadoButtonActionPerformed(evt);
-            }
-        });
 
-        saudeButton.setText("setSaude");
-
-        energiaButton.setText("setEnergia");
-        energiaButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                energiaButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -131,14 +128,8 @@ public class FrameTiogotchi extends javax.swing.JFrame {
                         .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(21, 21, 21)
                         .addComponent(saudeProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(131, 131, 131)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(saudeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(estadoButton)
-                            .addComponent(energiaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+                    .addGroup(layout.createSequentialGroup()))));
+        
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -148,13 +139,6 @@ public class FrameTiogotchi extends javax.swing.JFrame {
                         .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(estadoButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(saudeButton)
-                        .addGap(8, 8, 8)
-                        .addComponent(energiaButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
@@ -244,19 +228,39 @@ public class FrameTiogotchi extends javax.swing.JFrame {
             }
         });
     }
-
+    public void setEnergiaLvl(double lvl){
+    	this.energiaProgressBar.setValue((int) lvl);
+    }
+    public void setTio(Tio tio){
+    	this.tio = tio;
+    }
+    public void setHumor(int humor){
+    	this.humor = humor;
+    	Color color = null;
+    	switch(humor){
+    	
+    		case HUMOR_FELIZ:
+    			color = Color.GREEN; break;
+    		case HUMOR_OK:
+    			color = Color.BLUE; break;
+    		case HUMOR_FAMINTO:
+    			color = Color.RED; break;
+    		case HUMOR_TRISTE:
+    			color = Color.RED; break;
+    		case HUMOR_MORTO:
+    			color = Color.BLACK; break;    
+    	}
+    	energiaProgressBar.setForeground(color);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Canvas canvas1;
     private javax.swing.JButton comer;
     private javax.swing.JButton dormir;
-    private javax.swing.JButton energiaButton;
-    private javax.swing.JProgressBar energiaProgressBar;
-    private javax.swing.JButton estadoButton;
     private javax.swing.JButton exercitar;
+    private javax.swing.JProgressBar energiaProgressBar;    
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JButton saudeButton;
     private javax.swing.JProgressBar saudeProgressBar;
     // End of variables declaration//GEN-END:variables
 }

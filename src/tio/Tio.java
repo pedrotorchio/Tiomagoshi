@@ -14,23 +14,31 @@ public class Tio implements ServivoComNescessidades, EnergyLevelListener{
 		FrameTiogotchi gui = new FrameTiogotchi();
 		MetabolismoEnergetico mEnergetico = new MetabolismoEnergetico();
 		Energia energia = new Energia();
+		Tio tio = new Tio();
+		
 		
 		mEnergetico.setEnergia(energia);
 		
-		Tio tio = new Tio(gui, mEnergetico);
+		tio.setMetabolismoEnergetico(mEnergetico);
+		tio.setGui(gui);
 		
 		energia.setEnergyLevelUpdateCallback(tio);
 		energia.setLowEnergyLevelCallback(tio);
 		
-		mEnergetico.start();
+		tio.start();
 		
-
 	}
-	public Tio(FrameTiogotchi gui, MetabolismoEnergetico mEnergetico){
+	public void start(){
+		mEnergetico.start();
+		gui.setVisible(true);
+	}
+	public Tio(){}
+	public void setMetabolismoEnergetico(MetabolismoEnergetico m){
+		this.mEnergetico = m;
+	}
+	public void setGui(FrameTiogotchi gui){
 		this.gui = gui;
-		this.mEnergetico = mEnergetico;
 	}
-
 	@Override
 	public void comer(double fatorAnabolico) {
 		// TODO Auto-generated method stub
@@ -50,13 +58,13 @@ public class Tio implements ServivoComNescessidades, EnergyLevelListener{
 	}
 
 	
-	public synchronized void lowEnergylevelAction(double level) {
-				
+	public synchronized void lowEnergylevelAction(double level, int max, int min) {
+		gui.setHumor(gui.HUMOR_FAMINTO);
 	}
 
-	public synchronized void energyLevelUpdate(double level) {
-		System.out.println("Energia:" + level);		
-		
+	public synchronized void energyLevelUpdate(double level, int max, int min) {
+		double percent = level*100/max;	
+		gui.setEnergiaLvl(percent);
 	}
 
 }

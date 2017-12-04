@@ -25,9 +25,9 @@ public class Energia {
 		nivel = Math.min(MAX_ENERGIA, Math.max(MIN_ENERGIA, nivel));
 		
 		if(this.elCallback != null)
-			this.elCallback.energyLevelUpdate(nivel);
+			this.elCallback.energyLevelUpdate(nivel, MAX_ENERGIA, MIN_ENERGIA);
 		if(nivel < threshold && this.llCallback != null)
-			this.llCallback.lowEnergylevelAction(nivel);
+			this.llCallback.lowEnergylevelAction(nivel, MAX_ENERGIA, MIN_ENERGIA);
 		
 		
 		this.nivel = nivel;
@@ -37,10 +37,10 @@ public class Energia {
 	}
 	
 	public static interface LowEnergyLevelListener{
-		public void lowEnergylevelAction(double level);
+		public void lowEnergylevelAction(double level, int max, int min);
 	}
 	public static interface EnergyLevelUpdateListener{
-		public void energyLevelUpdate(double level);
+		public void energyLevelUpdate(double level, int max, int min);
 	}
 	public static interface EnergyLevelListener extends LowEnergyLevelListener, EnergyLevelUpdateListener{}
 }
