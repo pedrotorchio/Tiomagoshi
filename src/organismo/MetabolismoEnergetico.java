@@ -45,13 +45,13 @@ public class MetabolismoEnergetico implements ServivoComNescessidades {
 	   metabolismo.setAnabolismo(nivelMet);
 	}
 	public void dormir(double minutos) {
-		catabolismoXtempo(.1, minutos);		
+		catabolismoXtempo(5, minutos);		
 	}
 	public void exercitar(double minutos) {
-		catabolismoXtempo(1, minutos);
+		catabolismoXtempo(10, minutos);
 	}
-	private void catabolismoXtempo(double taxa, double min){
-		double value    = min*taxa;
+	private void catabolismoXtempo(double taxaPorHora, double min){
+		double value    = min*taxaPorHora/60;
 		
 		System.out.println("++" + value+ "% Catabolismo");
 		

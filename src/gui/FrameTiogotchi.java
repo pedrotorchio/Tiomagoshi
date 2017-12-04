@@ -7,6 +7,8 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -32,6 +34,7 @@ public class FrameTiogotchi extends javax.swing.JFrame {
     public FrameTiogotchi() {
         initComponents();
         setHumor(HUMOR_OK);
+        saudeProgressBar.setValue(50);
     }
 
 
@@ -57,39 +60,26 @@ public class FrameTiogotchi extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         comer.setText("Comer");
-        comer.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-            	comer();
-            }
+        comer.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				comer();				
+			}
         });
-        comer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comerActionPerformed(evt);
-            }
-        });
-
         dormir.setText("Dormir");
-        dormir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                dormirMouseClicked(evt);
-            }
-        });
-        dormir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dormirActionPerformed(evt);
-            }
+        dormir.addActionListener(new ActionListener() {
+        	@Override
+			public void actionPerformed(ActionEvent e) {
+				dormir();				
+			}
         });
 
         exercitar.setText("Exercitar");
-        exercitar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                exercitarMouseClicked(evt);
-            }
-        });
-        exercitar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exercitarActionPerformed(evt);
-            }
+        exercitar.addActionListener(new ActionListener() {
+        	@Override
+			public void actionPerformed(ActionEvent e) {
+        		exercitar();				
+			}
         });
 
         energiaProgressBar.setOrientation(1);
@@ -209,55 +199,114 @@ public class FrameTiogotchi extends javax.swing.JFrame {
     	
     	this.energiaProgressBar.setValue((int) lvl);
     }
+    public void setSaudeLvl(double lvl){
+    	this.saudeProgressBar.setValue((int)lvl);
+    }
     public void setTio(Tio tio){
     	this.tio = tio;
     }
+    public void setFome(boolean isFaminto){
+    	Color color;
+    	
+    	if(isFaminto)
+    		color = Color.decode("#ffdddd");
+    	else
+    		color = Color.decode("#ddffe0");
+    	
+    	getContentPane().setBackground(color);
+    }
+    public void setMorto(){
+    	Color color = Color.decode("#d2d2d2");
+    	
+    	getContentPane().setBackground(color);
+    	
+    	humorLbl.setText(":x");
+    }
     public void setHumor(int humor){
     	this.humor = humor;
-    	Color color = null;
-    	String cara = "{|:{)";
-    	switch(humor){
     	
-    		case HUMOR_FELIZ:
-    			color = Color.decode("#ddffe0");
-    			
+    	String cara = ":|";
+    	
+    	switch(humor){
+    		case HUMOR_FELIZ:    			
     			cara  = ":)";
     			break;
     		case HUMOR_OK:
-    			color = Color.decode("#dddeff");
     			cara  = ":|";
     			break;
-    		case HUMOR_FAMINTO:
-    			color = Color.decode("#ffdddd"); 
-    			cara  = ":&";
-    			break;
-    		case HUMOR_TRISTE:
-    			color = Color.decode("#f9ddff"); 
+    		case HUMOR_TRISTE: 
     			cara  = ":(";
-    			break;
-    		case HUMOR_MORTO:
-    			color = Color.decode("#d2d2d2");
-    			cara  = ":x";
-    			break;    
+    			break;  
     	}
-    	energiaProgressBar.setForeground(color);
+    	
+    	
     	humorLbl.setText(cara);
-    	getContentPane().setBackground(color);
+    	
     }
-    public void comer(){
-    	tio.comer(60);
-    	comer.setEnabled(false);
-        TimerTask task = new TimerTask() {
-            public void run() {
-                comer.setEnabled(true);
-            }
-        };
-        Timer timer = new Timer("Comer");
-         
-        long delay = 8000L;
-        timer.schedule(task, delay);
+    private void exercitar(){
+    	int tempo = (int)(Math.random() * 80 + 60);
+    	
+    	tio.exercitar(tempo);
+    	
+    	blockExercitar(10000);
     }
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private void comer(){
+    	
+    	int teor = (int) (Math.random() * 20 + 20);
+    	
+    	tio.comer(teor);
+    	
+    	blockComer(7500);
+    }
+    private void dormir(){
+    	int tempo = (int) (Math.random() * 180 + 200);
+    	tio.dormir(tempo);
+    	
+    	blockDormir(10000);
+    }
+    
+    private void blockDormir(int tmp){
+    	synchronized(dormir){
+    		dormir.setEnabled(false);
+            TimerTask task = new TimerTask() {
+                public void run() {
+                    dormir.setEnabled(true);
+                }
+            };
+            Timer timer = new Timer("Dormir");
+            
+            long delay = tmp;
+            timer.schedule(task, delay);	
+    	}    	
+    }
+    private void blockComer(int tmp){
+    	synchronized(comer){
+    		comer.setEnabled(false);
+            TimerTask task = new TimerTask() {
+                public void run() {
+                    comer.setEnabled(true);
+                }
+            };
+            Timer timer = new Timer("Comer");
+            
+            long delay = tmp;
+            timer.schedule(task, delay);	
+    	}
+    }
+    private void blockExercitar(int tmp){
+    	synchronized(exercitar){
+    		exercitar.setEnabled(false);
+            TimerTask task = new TimerTask() {
+                public void run() {
+                    exercitar.setEnabled(true);
+                }
+            };
+            Timer timer = new Timer("Exercitar");
+            
+            long delay = tmp;
+            timer.schedule(task, delay);	
+    	}    	
+    }
     private java.awt.Canvas canvas1;
     private javax.swing.JButton comer;
     private javax.swing.JButton dormir;
@@ -267,5 +316,5 @@ public class FrameTiogotchi extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel humorLbl;
     private javax.swing.JProgressBar saudeProgressBar;
-    // End of variables declaration//GEN-END:variables
+
 }

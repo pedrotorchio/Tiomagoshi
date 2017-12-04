@@ -5,10 +5,10 @@ public class Saude {
 	int threshold = 500;
 	
 	LowHealthLevelListener llCallback = null;
-	 healthLevelUpdateListener elCallback = null;
+	HealthLevelUpdateListener elCallback = null;
 	
-	final int MAX_SAUDE = 2500;	
-	final int MIN_SAUDE = 0;
+	public static final int MAX_SAUDE = 3000;	
+	public static final int MIN_SAUDE = 0;
 	
 	public Saude(){}
 	
@@ -18,7 +18,7 @@ public class Saude {
 	public void setLowHealthLevelCallback(LowHealthLevelListener cb){
 		this.llCallback = cb;
 	}
-	public void setHealthLevelUpdateCallback( healthLevelUpdateListener cb){
+	public void setHealthLevelUpdateCallback( HealthLevelUpdateListener cb){
 		this.elCallback = cb;
 	}
 	public void setNivel(double nivel){
@@ -39,8 +39,8 @@ public class Saude {
 	public static interface LowHealthLevelListener{
 		public void lowHealthlevelAction(double level, int max, int min);
 	}
-	public static interface healthLevelUpdateListener{
+	public static interface HealthLevelUpdateListener{
 		public void healthLevelUpdate(double level, int max, int min);
 	}
-	public static interface healthLevelListener extends LowHealthLevelListener, healthLevelUpdateListener{}
+	public static interface HealthLevelListener extends LowHealthLevelListener, HealthLevelUpdateListener{}
 }
